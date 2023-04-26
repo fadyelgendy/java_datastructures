@@ -3,7 +3,7 @@ Data Structures is very imporant in sonfware engineering. Computers, of any type
 to store, process and mainpulate data. So a good datastructre will cause a good program.
 
 ## Datastructure List:
-- [ ] Hashset => Hash table with unique values.
-- [ ] Hashmap => Hash table with (key, value) pairs internals.
+- [x] Hashset => Hash table with unique values.
+- [x] Hashmap => Hash table with (key, value) pairs internals.
 
 ... More to come
