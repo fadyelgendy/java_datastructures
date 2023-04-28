@@ -6,5 +6,6 @@ to store, process and mainpulate data. So a good datastructre will cause a good 
 - [x] Hashset => Hash table with unique values.
 - [x] Hashmap => Hash table with (key, value) pairs internals.
 - [x] Linked List => Singly Linked List
+- [x] Doubly Linked List => Doubly Linked List
 
 ... More to come
