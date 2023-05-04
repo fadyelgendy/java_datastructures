@@ -7,5 +7,7 @@ to store, process and mainpulate data. So a good datastructre will cause a good 
 - [x] Hashmap => Hash table with (key, value) pairs internals.
 - [x] Linked List => Singly Linked List
 - [x] Doubly Linked List => Doubly Linked List
+- [x] Stack => LIFO [last in first out] data structure
+- [x] Queue => FIFO [First in first out] data structure
 
 ... More to come
