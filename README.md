@@ -9,5 +9,6 @@ to store, process and mainpulate data. So a good datastructre will cause a good 
 - [x] Doubly Linked List => Doubly Linked List
 - [x] Stack => LIFO [last in first out] data structure
 - [x] Queue => FIFO [First in first out] data structure
+- [x] Binary Tree => Traversal
 
 ... More to come
