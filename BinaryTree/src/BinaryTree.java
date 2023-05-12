@@ -3,7 +3,15 @@ import java.util.Queue;
 import java.util.Stack;
 
 class BinaryTree {
-    public static void main(String[] args) {
+    private Node root = null;
+
+    //   A
+    //  / \
+    //  B   C
+    // / \   \
+    // D  E   F
+
+    public BinaryTree() {
         Node a = new Node('A');
         Node b = new Node('B');
         Node c = new Node('C');
@@ -14,49 +22,43 @@ class BinaryTree {
         a.setLeft(b);
         a.setRight(c);
         b.setLeft(d);
-        d.setRight(e);
+        b.setRight(e);
         c.setRight(f);
 
-        // Depth first Traverse Iteratively
-        traverseIterative(a);
+        this.root = a;
+    }
 
-        // Breadth first Traverse Iteratively
-        traverseBFIterative(a);
-
-        // Traverse Recursively
-        traverse(a);
-        System.out.println();
-
-        // Find Node, Iteratively
-        containsIterative(a, 'X');
-
-        // Find node Recursively
-        System.out.println("[X] is in Tree: " + containsRecursive(a, 'X'));
-        System.out.println("[E] is in Tree: " + containsRecursive(a, 'E'));
+    public Node getRoot() {
+        return this.root;
     }
 
     // Depth first traverse, iterative
-    public static void traverseIterative(Node root) {
-        if (root == null) return;
+    public void traverseIterative(Node root) {
+        System.out.println("Depth first traverse, Iterative:");
+        if (root == null)
+            return;
 
         Stack<Node> visisted = new Stack<>();
 
         visisted.push(root);
 
-        while(visisted.size() != 0) {
+        while (visisted.size() != 0) {
             Node current = visisted.pop();
             System.out.printf("%c ", current.getData());
 
-            if (current.getRight() != null) visisted.push(current.getRight());
-            if (current.getLeft() != null) visisted.push(current.getLeft());
+            if (current.getRight() != null)
+                visisted.push(current.getRight());
+            if (current.getLeft() != null)
+                visisted.push(current.getLeft());
         }
 
         System.out.println();
     }
 
     // Depth First traverse, Recursive
-    public static void traverse(Node root) {
-        if (root == null) return;
+    public void traverse(Node root) {
+        if (root == null)
+            return;
 
         System.out.printf("%c ", root.getData());
 
@@ -65,27 +67,32 @@ class BinaryTree {
     }
 
     // Breadth first traverse, iteratively
-    public static void traverseBFIterative(Node root) {
-        if (root == null) return;
+    public void traverseBFIterative(Node root) {
+        System.out.println("Breadth first traverse, Iterative:");
+
+        if (root == null)
+            return;
 
         Queue<Node> visisted = new LinkedList<>();
 
         visisted.add(root);
 
-        while(visisted.size() != 0) {
+        while (visisted.size() != 0) {
             Node current = visisted.remove();
 
             System.out.printf("%c ", current.getData());
 
-            if (current.getLeft() != null) visisted.add(current.getLeft());
-            if (current.getRight() != null) visisted.add(current.getRight());
+            if (current.getLeft() != null)
+                visisted.add(current.getLeft());
+            if (current.getRight() != null)
+                visisted.add(current.getRight());
         }
 
         System.out.println();
     }
 
     // Find node Iteratively
-    public static void containsIterative(Node root, char val) {
+    public void containsIterative(Node root, char val) {
         if (root == null) {
             System.out.println("false");
             return;
@@ -94,7 +101,7 @@ class BinaryTree {
         Queue<Node> visited = new LinkedList<>();
         visited.add(root);
 
-        while(visited.size() != 0) {
+        while (visited.size() != 0) {
             Node current = visited.remove();
 
             if (current.getData() == val) {
@@ -102,15 +109,17 @@ class BinaryTree {
                 return;
             }
 
-            if (current.getLeft() != null) visited.add(current.getLeft());
-            if (current.getRight() != null) visited.add(current.getRight());
+            if (current.getLeft() != null)
+                visited.add(current.getLeft());
+            if (current.getRight() != null)
+                visited.add(current.getRight());
         }
 
         System.out.println("false");
     }
 
     // Find node Recursively
-    public static boolean containsRecursive(Node root, char val) {
+    public boolean containsRecursive(Node root, char val) {
         if (root == null) {
             return false;
         }
@@ -120,5 +129,82 @@ class BinaryTree {
         }
 
         return containsRecursive(root.getLeft(), val) || containsRecursive(root.getRight(), val);
+    }
+
+    // Sum a tree values, Iteratively
+    public int treeSumIterative(Node root) {
+        if (root == null)
+            return 0;
+
+        int sum = 0;
+
+        Stack<Node> visited = new Stack<>();
+
+        visited.push(root);
+
+        while (visited.size() != 0) {
+            Node current = visited.pop();
+
+            sum += current.getData();
+
+            if (current.getLeft() != null)
+                visited.push(current.getLeft());
+            if (current.getRight() != null)
+                visited.push(current.getRight());
+        }
+
+        return sum;
+    }
+
+    // Tree Sum, Recursive
+    public int treeSumRecursive(Node root) {
+        if (root == null)
+            return 0;
+        return root.getData() + treeSumRecursive(root.getLeft()) + treeSumRecursive(root.getRight());
+    }
+
+    // Tree Minimum value, iterative
+    public int findMinIterative(Node root) {
+        if (root == null)
+            return 0;
+
+        Stack<Node> visited = new Stack<>();
+        visited.push(root);
+
+        // Assume that root is the minimum value, so start with
+        int min = root.getData();
+
+        while (visited.size() != 0) {
+            Node current = visited.pop();
+
+            if (current.getData() < min)
+                min = current.getData();
+
+            if (current.getLeft() != null)
+                visited.push(current.getLeft());
+            if (current.getRight() != null)
+                visited.push(current.getRight());
+        }
+
+        return min;
+    }
+
+    // Tree Minimum value, recursive
+    public int findMinRecursive(Node root) {
+        if (root == null)
+            return Integer.MAX_VALUE;
+
+        return Math.min(root.getData(), Math.min(findMinRecursive(root.getLeft()), findMinRecursive(root.getRight())));
+    }
+
+    // Tree Max path sum, recursive
+    public int maxPathSum(Node root) {
+        if (root == null)
+            return Integer.MIN_VALUE;
+
+        if (root.getRight() == null && root.getLeft() == null)
+            return root.getData();
+
+        return root.getData() + Math.max(maxPathSum(root.getLeft()), maxPathSum(root.getRight()));
     }
 }
