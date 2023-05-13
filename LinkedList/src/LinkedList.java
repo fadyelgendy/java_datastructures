@@ -1,6 +1,6 @@
 public class LinkedList {
     public Node head = null;
-    public Node next = null;
+    public Node tail = null;
     public int size = 0;
 
     public LinkedList() {
@@ -19,7 +19,7 @@ public class LinkedList {
 
         if (this.head == null) {
             this.head = new_node;
-            this.next = null;
+            this.tail = null;
         } else {
             new_node.setNext(this.head);
             this.head = new_node;
@@ -37,11 +37,11 @@ public class LinkedList {
 
         Node current = this.head;
 
-        while (current.next != null) {
-            current = current.next;
+        while (current.getNext() != null) {
+            current = current.getNext();
         }
 
-        current.next = new_node;
+        current.setNext(new_node);
         this.size++;
     }
 
@@ -68,11 +68,11 @@ public class LinkedList {
         int i = 0;
         while (i < this.size) {
             if (i == index) {
-                new_node.next = current.next;
-                current.next = new_node;
+                new_node.setNext(current.getNext());
+                current.setNext(new_node);
             }
 
-            current = current.next;
+            current = current.getNext();
             ++i;
         }
 
@@ -138,7 +138,7 @@ public class LinkedList {
                 System.out.printf("-->[ %d ]", current.getData());
             }
 
-            current = current.next;
+            current = current.getNext();
             ++i;
         }
 
