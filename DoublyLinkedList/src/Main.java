@@ -16,5 +16,11 @@ public class Main {
 
         myDLL.printList();
         myDLL.printListReverse();
+
+        System.out.println("BoublyLinkedList reversed:");
+        myDLL.reverse();
+
+        myDLL.printList();
+        myDLL.printListReverse();
     }
 }

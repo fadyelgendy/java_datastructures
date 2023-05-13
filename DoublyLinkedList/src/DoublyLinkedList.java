@@ -111,6 +111,23 @@ public class DoublyLinkedList {
         System.out.println();
     }
 
+    public void reverse() {
+        Node current = this.head;
+        Node prev = null;
+        Node temp = null;
+
+        while (current != null) {
+            temp = current;
+            current = current.getNext();
+            temp.setNext(prev);
+            temp.setPrev(current);
+            prev = temp;
+        }
+
+        this.tail = this.head;
+        this.head = prev;
+    }
+
     public void printListReverse() {
         Node current = tail;
 
