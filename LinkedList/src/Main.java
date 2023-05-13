@@ -10,11 +10,11 @@ public class Main {
         System.out.println(myLinkedList.getSize());
         myLinkedList.printList();
 
-        myLinkedList.remove(0);
-        myLinkedList.remove(4);
-        myLinkedList.remove(2);
-        myLinkedList.remove(1);
-        myLinkedList.remove(3);
+        // myLinkedList.remove(0);
+        // myLinkedList.remove(4);
+        // myLinkedList.remove(2);
+        // myLinkedList.remove(1);
+        // myLinkedList.remove(3);
 
         System.out.println(myLinkedList.getSize());
         myLinkedList.printList();
@@ -23,5 +23,10 @@ public class Main {
 
         System.out.println(myLinkedList.getSize());
         myLinkedList.printList();
+
+        myLinkedList.reverse();
+
+        myLinkedList.printList();
+
     }
 }

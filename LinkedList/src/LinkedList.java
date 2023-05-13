@@ -124,6 +124,23 @@ public class LinkedList {
         this.size--;
     }
 
+    // Reverse a linked List
+    public void reverse() {
+        Node current = this.head;
+        Node prev = null;
+        Node temp = null;
+
+        while (current != null) {
+            temp = current;
+            current = current.getNext();
+            temp.setNext(prev);
+            prev = temp;
+        }
+
+        this.tail = this.head;
+        this.head = prev;
+    }
+
     /*
     * Visualize The List Contents
     */
